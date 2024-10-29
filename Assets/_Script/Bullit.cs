@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bullit : MonoBehaviour
 {
-    public float impactForce = 400f; 
+    public float impactForce = 500f; 
 
     private void OnCollisionEnter(Collision collision)
     {
