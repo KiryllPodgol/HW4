@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TennisBallStand : MonoBehaviour
+public class StandSpehere : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
