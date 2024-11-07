@@ -1,13 +1,17 @@
 using UnityEngine;
 
-public class GranadeStand : MonoBehaviour
+public class GrenadeStand : MonoBehaviour
 {
+    public Grenade grenadeProjectilePrefab;
+    public float grenadeForce = 1000f;
+
     private void OnTriggerEnter(Collider other)
     {
         ShootingController shootingController = other.GetComponent<ShootingController>();
         if (shootingController != null)
         {
-            shootingController.EnableGrenadeShooting();
+            
+            shootingController.SetProjectile(grenadeProjectilePrefab, grenadeForce);
             Debug.Log("Режим стрельбы гранатами активирован.");
         }
     }
