@@ -6,8 +6,7 @@ public class RobotMove : MonoBehaviour
    
        public float movementSpeed = 5f;   // Скорость движения
        public float rotationSpeed = 700f; // Скорость поворота
-       public float mouseSensitivity = 2f; // Чувствительность мыши
-   
+       public float mouseSensitivity = 1f; // Чувствительность мыши
        private CharacterController characterController;
        private InputAsset inputAsset; 
        private Vector2 moveInput;
@@ -17,6 +16,8 @@ public class RobotMove : MonoBehaviour
        {
            inputAsset = new InputAsset();
            characterController = GetComponent<CharacterController>();
+           Cursor.lockState = CursorLockMode.Locked;
+           Cursor.visible = false;
        }
    
        void OnEnable()
@@ -31,34 +32,34 @@ public class RobotMove : MonoBehaviour
        {
            inputAsset.Gameplay.Move.performed -= OnMove;
            inputAsset.Gameplay.Move.canceled -= CancelMove; 
-           inputAsset.Gameplay.Look.performed -= OnLook; 
            inputAsset.Gameplay.Disable();
        }
-   
+
        void Update()
        {
-          
-           Camera mainCamera = Camera.main;
-           Vector3 cameraForward = mainCamera.transform.forward;
-           cameraForward.y = 0; 
-           Vector3 cameraRight = mainCamera.transform.right;
-   
-          
+
+
+           Vector3 cameraForward = transform.forward;
+           cameraForward.y = 0;
+           Vector3 cameraRight = transform.right;
+
+
            Vector3 moveDirection = (cameraForward * moveInput.y + cameraRight * moveInput.x).normalized;
-   
-           if (moveDirection.sqrMagnitude > 0.01f) 
+
+           if (moveDirection.sqrMagnitude > 0.01f)
            {
                // Поворот робота в сторону движения
                Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-               transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+               transform.rotation =
+                   Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
            }
-   
+
            // Движение вперёд
            Vector3 velocity = moveDirection * movementSpeed;
            velocity.y = Physics.gravity.y; // Добавляем гравитацию
            characterController.Move(velocity * Time.deltaTime);
        }
-   
+
        private void OnMove(InputAction.CallbackContext context)
        {
            moveInput = context.ReadValue<Vector2>();
@@ -82,4 +83,3 @@ public class RobotMove : MonoBehaviour
         
        }
    }
-

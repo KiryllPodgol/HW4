@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Grenade : Projectile
@@ -7,14 +8,14 @@ public class Grenade : Projectile
     public float explosionRadius = 5f;
     public float explosionForce = 1000f;
 
+    private void Awake()
+    {
+        var rb = GetComponent<Rigidbody>();
+        rb.excludeLayers = LayerMask.GetMask("Robot");
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            return; 
-        }
-
-        
         Explode();
     }
 

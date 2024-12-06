@@ -3,6 +3,13 @@ using UnityEngine;
 public class Bullet : Projectile
 {
     public float bulletForce = 800f;
+    
+    private void Awake()
+    {
+        var rb = GetComponent<Rigidbody>();
+        rb.excludeLayers = LayerMask.GetMask("Robot");
+        
+    }
     private void Start()
     {
         // Применяемая сила к пуле при её создании
