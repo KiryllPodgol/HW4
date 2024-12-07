@@ -652,12 +652,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.42, z: -11.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.48, z: -6.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1993961984}
   m_LocalEulerAnglesHint: {x: 11.511, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
@@ -1257,7 +1257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 1142817513021488665, guid: 2c1fe5adaa9dccf4584a2cb7cc9c6cb6, type: 3}
-  projectileForce: 700
+  projectileForce: 1000
 --- !u!65 &586178146
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2586,6 +2586,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3547023559878976248, guid: e6409cf83c92eef45bc1f9c297e50c2f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 161352372}
+    - targetCorrespondingSourceObject: {fileID: 3547023559878976248, guid: e6409cf83c92eef45bc1f9c297e50c2f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 330585546}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3383331792312864294, guid: e6409cf83c92eef45bc1f9c297e50c2f, type: 3}
       insertIndex: -1
@@ -3027,7 +3030,6 @@ MeshFilter:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 525924955}

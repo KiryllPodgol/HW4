@@ -2,17 +2,19 @@ using UnityEngine;
 
 public class Bullet : Projectile
 {
-    public float bulletForce = 800f;
-    
+    public float bulletForce = 800f; 
+    public float trailFadeTime = 0.2f; 
+    private TrailRenderer _trailRenderer;
     private void Awake()
     {
         var rb = GetComponent<Rigidbody>();
         rb.excludeLayers = LayerMask.GetMask("Robot");
-        
+        _trailRenderer = GetComponent<TrailRenderer>();
     }
+
     private void Start()
     {
-        // Применяемая сила к пуле при её создании
+       
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb != null)
         {
@@ -22,11 +24,6 @@ public class Bullet : Projectile
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            return;
-        }
-
         Rigidbody targetRb = collision.collider.GetComponent<Rigidbody>();
 
         if (targetRb != null)
@@ -34,7 +31,11 @@ public class Bullet : Projectile
             Vector3 forceDirection = GetComponent<Rigidbody>().linearVelocity.normalized;
             ApplyImpact(targetRb, forceDirection);
         }
-
-        Destroy(gameObject);
+        if (_trailRenderer != null)
+        {
+            _trailRenderer.autodestruct = true; 
+            _trailRenderer.time = trailFadeTime; 
+        }
+        Destroy(gameObject); 
     }
 }
