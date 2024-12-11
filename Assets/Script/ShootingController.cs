@@ -1,44 +1,67 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class ShootingController : MonoBehaviour
+namespace Script
 {
-    public Transform firePoint;
-    public float shootForce;
-    private Projectile currentProjectile; // ������ �� ������� ������
-    private bool canShoot = false;
-
-    void Start()
+    public class ShootingController : MonoBehaviour
     {
-        canShoot = true;
-    }
+        public Transform firePoint;
+        public float shootForce;
+        private Projectile _currentProjectile; // тип снаряда
+        private InputAsset _inputAsset; 
+        private bool _canShoot = false;
 
-    void Update()
-    {
-        if (canShoot && Input.GetKeyDown(KeyCode.Space))
+        private void Awake()
         {
-            Shoot();
+            _inputAsset = new InputAsset();
         }
-    }
-
-    void Shoot()
-    {
-        if (currentProjectile == null) return;
-        GameObject projectileInstance = Instantiate(currentProjectile.gameObject, firePoint.position, firePoint.rotation);
-        Rigidbody rb = projectileInstance.GetComponent<Rigidbody>();
-        if (rb != null)
+        void OnEnable()
         {
-            rb.AddForce(firePoint.forward * shootForce);
+            _inputAsset.Gameplay.Enable();
+            _inputAsset.Gameplay.Shoot.started += ShootOnstarted;
         }
-    }
 
-    public void SetProjectile(Projectile projectile, float force)
-    {
-        currentProjectile = projectile;
-        shootForce = force;
-    }
+        private void ShootOnstarted(InputAction.CallbackContext obj)
+        {
+            if (_canShoot)
+            {
+                Shoot();
+                Debug.Log("Выстрелил");
+            }
+        
+        }
 
-    public void DisableShooting()
-    {
-        canShoot = false;
+        void OnDisable()
+        {
+        _inputAsset.Gameplay.Shoot.started -= ShootOnstarted;
+        _inputAsset.Gameplay.Disable();
+        }
+
+
+        
+        void Start()
+        {
+            _canShoot = true;
+        }
+
+        
+
+        void Shoot()
+        {
+            if (_currentProjectile == null) return;
+            Projectile projectileInstance = Instantiate(_currentProjectile, firePoint.position, firePoint.rotation);
+            projectileInstance.Launch(firePoint.forward);
+        }
+
+        public void SetProjectile(Projectile projectile, float force)
+        {
+            _currentProjectile = projectile;
+            shootForce = force;
+        }
+
+        public void DisableShooting()
+        {
+            _canShoot = false;
+        }
     }
 }

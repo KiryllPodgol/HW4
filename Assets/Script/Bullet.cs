@@ -1,41 +1,27 @@
 using UnityEngine;
 
-public class Bullet : Projectile
+namespace Script
 {
-    public float bulletForce = 800f; 
-    public float trailFadeTime = 0.2f; 
-    private TrailRenderer _trailRenderer;
-    private void Awake()
+    public class Bullet : Projectile
     {
-        var rb = GetComponent<Rigidbody>();
-        rb.excludeLayers = LayerMask.GetMask("Robot");
-        _trailRenderer = GetComponent<TrailRenderer>();
-    }
+        public float bulletForce = 800f;
+        public float trailFadeTime = 0.2f;
+        private TrailRenderer _trailRenderer;
 
-    private void Start()
-    {
-       
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null)
+        protected override void Awake()
         {
-            rb.AddForce(transform.forward * bulletForce);
+            base.Awake();
+            _trailRenderer = GetComponent<TrailRenderer>();
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Rigidbody targetRb = collision.collider.GetComponent<Rigidbody>();
-
-        if (targetRb != null)
+        protected override void ApplyImapct(Collision collision)
         {
-            Vector3 forceDirection = GetComponent<Rigidbody>().linearVelocity.normalized;
-            ApplyImpact(targetRb, forceDirection);
+            base.ApplyImapct(collision);
+            if (_trailRenderer != null)
+            {
+                _trailRenderer.autodestruct = true;
+                _trailRenderer.time = trailFadeTime;
+            }
         }
-        if (_trailRenderer != null)
-        {
-            _trailRenderer.autodestruct = true; 
-            _trailRenderer.time = trailFadeTime; 
-        }
-        Destroy(gameObject); 
     }
 }

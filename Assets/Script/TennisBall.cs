@@ -4,24 +4,22 @@ public class TennisBall : Projectile
 {
     private TrailRenderer trail;
 
-    private void Awake()
+    protected override void Awake()
     {
-        var rb = GetComponent<Rigidbody>();
-        rb.excludeLayers = LayerMask.GetMask("Robot");
+        base.Awake();
         trail = GetComponent<TrailRenderer>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public override void Launch(Vector3 direction)
     {
-        
-        if (trail != null)
-        {
-            trail.enabled = true;
-           
-            StartCoroutine(DisableTrailAfterTime(0.3f));
-        }
+        base.Launch(direction);
+        Destroy(gameObject,3.0f);
+    }
 
-        Destroy(gameObject, 2.0f);
+    protected override void OnCollisionEnter(Collision collision)
+    {
+        ApplyImapct(collision);
+        StartCoroutine(DisableTrailAfterTime(0.3f));
     }
 
     private System.Collections.IEnumerator DisableTrailAfterTime(float time)

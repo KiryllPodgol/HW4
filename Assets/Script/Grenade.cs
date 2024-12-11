@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Grenade : Projectile
@@ -7,20 +6,7 @@ public class Grenade : Projectile
     public float explosionEffectliveTime = 2f;
     public float explosionRadius = 5f;
     public float explosionForce = 1000f;
-
-    private void Awake()
-    {
-        var rb = GetComponent<Rigidbody>();
-        rb.excludeLayers = LayerMask.GetMask("Robot");
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Explode();
-    }
-
-    private void Explode()
-    {
+    protected override void ApplyImapct(Collision collision){
         GameObject explosion =  Instantiate(explossionEffect, transform.position, transform.rotation);
          
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
@@ -33,8 +19,6 @@ public class Grenade : Projectile
                 rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
             }
         }
-
-        Destroy(gameObject);
         Destroy(explosion, explosionEffectliveTime);
     }
 }
