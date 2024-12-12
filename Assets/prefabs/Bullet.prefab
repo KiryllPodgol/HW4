@@ -300,5 +300,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _force: 1000
   impactForce: 40
-  bulletForce: 800
+  impactParticlesPrefab: {fileID: 0}
   trailFadeTime: 0.2

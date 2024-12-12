@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _force: 1000
   impactForce: 500
-  explossionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
-  explosionEffectliveTime: 2
+  explosionEffect: {fileID: 198917022394846920, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
+  explosionEffectLifetime: 2
   explosionRadius: 5
   explosionForce: 1000
