@@ -13,6 +13,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b5bf0c891ea345fe93688f835df32fdc1dda00/b8/bbba6a95/LayerMask.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
@@ -95,7 +98,8 @@
       <workItem from="1733557203451" duration="607000" />
       <workItem from="1733557828035" duration="262000" />
       <workItem from="1733950244368" duration="1081000" />
-      <workItem from="1733951370464" duration="4356000" />
+      <workItem from="1733951370464" duration="6190000" />
+      <workItem from="1733986532184" duration="575000" />
     </task>
     <servers />
   </component>
