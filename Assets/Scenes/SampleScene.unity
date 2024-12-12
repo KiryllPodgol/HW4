@@ -469,6 +469,7 @@ GameObject:
   - component: {fileID: 255032998}
   - component: {fileID: 255032997}
   - component: {fileID: 255032996}
+  - component: {fileID: 255033000}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -565,6 +566,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &255033000
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255032995}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,7 +1141,7 @@ GameObject:
   - component: {fileID: 550168391}
   - component: {fileID: 550168390}
   - component: {fileID: 550168389}
-  - component: {fileID: 550168388}
+  - component: {fileID: 550168393}
   m_Layer: 0
   m_Name: StandGrenade
   m_TagString: Untagged
@@ -1121,20 +1149,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &550168388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 550168387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fb904202a21e5e428dd966eb32957ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grenadeProjectilePrefab: {fileID: 4146110460230962580, guid: acb6f9367b6785b4fbec94f5a5ad177d, type: 3}
-  grenadeForce: 1000
 --- !u!65 &550168389
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1224,6 +1238,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &550168393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550168387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26477f13b818a25479373015b15c7d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 4146110460230962580, guid: acb6f9367b6785b4fbec94f5a5ad177d, type: 3}
+  projectileForce: 1000
 --- !u!1 &586178144
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,7 +1264,7 @@ GameObject:
   - component: {fileID: 586178148}
   - component: {fileID: 586178147}
   - component: {fileID: 586178146}
-  - component: {fileID: 586178145}
+  - component: {fileID: 586178150}
   m_Layer: 0
   m_Name: StandTennisBall
   m_TagString: Untagged
@@ -1244,20 +1272,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &586178145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586178144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc7309a570860d44d80d3c328248ef86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 1142817513021488665, guid: 2c1fe5adaa9dccf4584a2cb7cc9c6cb6, type: 3}
-  projectileForce: 1000
 --- !u!65 &586178146
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1347,6 +1361,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &586178150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586178144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26477f13b818a25479373015b15c7d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 1142817513021488665, guid: 2c1fe5adaa9dccf4584a2cb7cc9c6cb6, type: 3}
+  projectileForce: 1000
 --- !u!1 &827021847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1544,7 +1572,7 @@ GameObject:
   - component: {fileID: 860826012}
   - component: {fileID: 860826011}
   - component: {fileID: 860826010}
-  - component: {fileID: 860826009}
+  - component: {fileID: 860826014}
   m_Layer: 0
   m_Name: StandBullet
   m_TagString: Untagged
@@ -1552,20 +1580,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &860826009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 860826008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29d6a726b094ef74a9868d0e68a0ddad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletProjectilePrefab: {fileID: 6021058220874404019, guid: ee9f7b90ef28e9d48a2d6fcc7422613e, type: 3}
-  bulletForce: 500
 --- !u!65 &860826010
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1655,6 +1669,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &860826014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860826008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26477f13b818a25479373015b15c7d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 6021058220874404019, guid: ee9f7b90ef28e9d48a2d6fcc7422613e, type: 3}
+  projectileForce: 500
 --- !u!1 &962010544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2380,6 +2408,7 @@ GameObject:
   - component: {fileID: 1551413156}
   - component: {fileID: 1551413155}
   - component: {fileID: 1551413154}
+  - component: {fileID: 1551413158}
   m_Layer: 0
   m_Name: StandTarget
   m_TagString: Untagged
@@ -2477,6 +2506,33 @@ Transform:
   - {fileID: 2130201090}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1551413158
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551413153}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1685957505
 GameObject:
   m_ObjectHideFlags: 0
@@ -2930,6 +2986,7 @@ GameObject:
   - component: {fileID: 2130201093}
   - component: {fileID: 2130201092}
   - component: {fileID: 2130201091}
+  - component: {fileID: 2130201094}
   m_Layer: 0
   m_Name: "\u043F\u043E\u043B\u043A\u0430"
   m_TagString: Untagged
@@ -3026,6 +3083,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130201089}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &2130201094
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130201089}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

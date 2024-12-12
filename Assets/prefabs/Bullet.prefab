@@ -298,5 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eccd27a12e3daa441a9715fe6a71750d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactForce: 0
+  _force: 1000
+  impactForce: 40
   bulletForce: 800
+  trailFadeTime: 0.2
