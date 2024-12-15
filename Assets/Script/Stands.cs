@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Stand : MonoBehaviour
 {
-    public Projectile projectilePrefab; // Префаб снаряда
-    public float projectileForce = 500f; // Сила снаряда
+    public Projectile projectilePrefab; // ?????? ???????
+    public float projectileForce = 500f; // ???? ???????
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,7 +12,7 @@ public class Stand : MonoBehaviour
         if (shootingController != null)
         {
             shootingController.SetProjectile(projectilePrefab, projectileForce);
-            Debug.Log($"Стенд выдал снаряд: {projectilePrefab.name}");
+            Debug.Log($"????? ????? ??????: {projectilePrefab.name}");
         }
     }
 }

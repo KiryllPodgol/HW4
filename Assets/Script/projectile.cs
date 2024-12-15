@@ -31,6 +31,11 @@ public abstract class Projectile : MonoBehaviour
     protected virtual void ApplyImapct(Collision collision)
     {
       Rigidbody targetRb = collision.collider.GetComponent<Rigidbody>();
+      if (!targetRb)
+      {
+          return;
+      }
+      
       Vector3 forceDirection = _rb.linearVelocity.normalized;
       targetRb.AddForce(forceDirection * impactForce, ForceMode.Impulse);
     }
