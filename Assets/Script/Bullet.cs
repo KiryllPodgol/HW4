@@ -17,6 +17,7 @@ namespace Script
         protected override void ApplyImapct(Collision collision)
         {
             base.ApplyImapct(collision);
+            AudioManager.Instance.PlayHitSound();
             if (impactParticlesPrefab != null)
             {
                 PlayImpactParticles(collision.contacts[0].point, collision.contacts[0].normal);

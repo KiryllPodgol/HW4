@@ -24,7 +24,8 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
                     if (FindObjectsOfType<T>().Length > 1)
                     {
-                        Debug.LogError($"[Singleton] There should never be more than one singleton of type {typeof(T)} in the scene!");
+                        Debug.LogError(
+                            $"[Singleton] There should never be more than one singleton of type {typeof(T)} in the scene!");
                         return _instance;
                     }
 
@@ -44,5 +45,19 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     protected virtual void OnDestroy()
     {
         _applicationIsQuitting = true;
+    }
+
+    protected virtual void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this as T;
+        }
+        else if (_instance != this)
+        {
+            Debug.LogWarning(
+                $"[Singleton] Instance of {typeof(T)} already exists. Destroying duplicate object {gameObject.name}.");
+            Destroy(gameObject);
+        }
     }
 }

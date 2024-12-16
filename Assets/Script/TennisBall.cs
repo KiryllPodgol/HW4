@@ -13,12 +13,14 @@ public class TennisBall : Projectile
     public override void Launch(Vector3 direction)
     {
         base.Launch(direction);
+        
         Destroy(gameObject,3.0f);
     }
 
     protected override void OnCollisionEnter(Collision collision)
     {
         ApplyImapct(collision);
+        AudioManager.Instance.PlayBounceSound();
         StartCoroutine(DisableTrailAfterTime(0.3f));
     }
 

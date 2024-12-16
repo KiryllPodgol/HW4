@@ -26,6 +26,7 @@ namespace Script
             if (_canShoot)
             {
                 Shoot();
+                AudioManager.Instance.PlayShootSound();
                 Debug.Log("Выстрелил");
             }
         

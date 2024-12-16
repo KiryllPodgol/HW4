@@ -19,6 +19,7 @@ public class Grenade : Projectile
                 rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
             }
         }
+        AudioManager.Instance.PlayExplosionSound();
         Destroy(explosion.gameObject, explosionEffectLifetime);
     }
 }
