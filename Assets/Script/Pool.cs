@@ -2,44 +2,44 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Pool
 {
-    private readonly Queue<Projectile> _objects = new Queue<Projectile>();
-    private readonly Projectile _prefab; 
+    private readonly Queue<IPoolable> _objects = new Queue<IPoolable>();
+    private readonly IPoolable _prefab;
     private readonly Transform _parent;
 
-    public Pool(Projectile prefab, int initialSize, Transform parent)
+    public Pool(IPoolable prefab, int initialSize, Transform parent)
     {
         _prefab = prefab;
         _parent = parent;
 
         for (int i = 0; i < initialSize; i++)
         {
-            Projectile obj = CreateNewObject();
+            IPoolable obj = CreateNewObject();
             _objects.Enqueue(obj);
         }
     }
 
-    private Projectile CreateNewObject()
+    private IPoolable CreateNewObject()
     {
-        Projectile obj = GameObject.Instantiate(_prefab, _parent);
-        obj.gameObject.SetActive(false);
+        IPoolable obj = (IPoolable)GameObject.Instantiate(_prefab as MonoBehaviour, _parent);
+        obj.OnObjectDespawn(); // Деактивировать объект сразу
         return obj;
     }
 
-    public Projectile Get()
+    public IPoolable Get()
     {
         if (_objects.Count == 0)
         {
             _objects.Enqueue(CreateNewObject());
         }
 
-        Projectile obj = _objects.Dequeue();
-        obj.gameObject.SetActive(true);
+        IPoolable obj = _objects.Dequeue();
+        obj.OnObjectSpawn(); // Активировать объект
         return obj;
     }
 
-    public void ReturnToPool(Projectile obj)
+    public void ReturnToPool(IPoolable obj)
     {
-        obj.gameObject.SetActive(false);
+        obj.OnObjectDespawn(); // Деактивировать объект перед возвращением в пул
         _objects.Enqueue(obj);
     }
 }

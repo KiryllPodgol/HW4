@@ -19,7 +19,7 @@ public class TennisBall : Projectile
 
     protected override void OnCollisionEnter(Collision collision)
     {
-        ApplyImapct(collision);
+        ApplyImpact(collision);
         AudioManager.Instance.PlayBounceSound();
         StartCoroutine(DisableTrailAfterTime(0.3f));
     }

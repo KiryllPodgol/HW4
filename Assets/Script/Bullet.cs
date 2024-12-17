@@ -14,9 +14,9 @@ namespace Script
             _trailRenderer = GetComponent<TrailRenderer>();
         }
 
-        protected override void ApplyImapct(Collision collision)
+        protected override void ApplyImpact(Collision collision)
         {
-            base.ApplyImapct(collision);
+            base.ApplyImpact(collision);
             AudioManager.Instance.PlayHitSound();
             if (impactParticlesPrefab != null)
             {

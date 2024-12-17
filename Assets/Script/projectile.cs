@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Projectile : MonoBehaviour
+public abstract class Projectile : MonoBehaviour, IPoolable
 {
     [SerializeField] float _force;
     protected Rigidbody _rb;
@@ -11,9 +11,7 @@ public abstract class Projectile : MonoBehaviour
         if (!_rb)
         {
             Debug.Log("Rigidbody attached to projectile is null");
-            
         }
-        _rb.excludeLayers = LayerMask.GetMask("Robot");
     }
 
     public virtual void Launch(Vector3 direction)
@@ -23,19 +21,31 @@ public abstract class Projectile : MonoBehaviour
 
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        ApplyImapct(collision);
-        BulletManager.Instance.ReturnBullet(this, this);
+        ApplyImpact(collision);
+        BulletManager.Instance.ReturnBullet(this);
     }
+
     public float impactForce;
-    protected virtual void ApplyImapct(Collision collision)
+    protected virtual void ApplyImpact(Collision collision)
     {
         Rigidbody targetRb = collision.collider.GetComponent<Rigidbody>();
         if (!targetRb)
         {
             return;
         }
-      
+
         Vector3 forceDirection = _rb.linearVelocity.normalized;
         targetRb.AddForce(forceDirection * impactForce, ForceMode.Impulse);
+    }
+
+    // ���������� ������� ���������� IPoolable
+    public void OnObjectSpawn()
+    {
+        gameObject.SetActive(true); // ��������� �������
+    }
+
+    public void OnObjectDespawn()
+    {
+        gameObject.SetActive(false); // ����������� �������
     }
 }

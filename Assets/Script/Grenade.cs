@@ -6,7 +6,7 @@ public class Grenade : Projectile
     public float explosionEffectLifetime = 2f;
     public float explosionRadius = 5f;
     public float explosionForce = 1000f;
-    protected override void ApplyImapct(Collision collision)
+    protected override void ApplyImpact(Collision collision)
     {
         ParticleSystem explosion = Instantiate(explosionEffect, transform.position, Quaternion.identity);
         explosion.Play();
