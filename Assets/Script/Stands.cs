@@ -12,7 +12,7 @@ public class Stand : MonoBehaviour
         if (shootingController != null)
         {
             shootingController.SetProjectile(projectilePrefab, projectileForce);
-            Debug.Log($"????? ????? ??????: {projectilePrefab.name}");
+            Debug.Log($"Снаряд: {projectilePrefab.name}");
         }
     }
 }

@@ -1,61 +1,55 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Script;
 
 public class BulletManager : Singleton<BulletManager>
 {
-    public GameObject bulletPrefab; // Префаб пули
-    public int initialPoolSize = 10;
+    [Header("Bullet Pool Settings")]
+    [SerializeField] private List<PoolObjectInfo> bulletPoolInfos;
 
-    private List<Projectile> _bulletPool;
+    private Dictionary<Projectile, Pool> bulletPools;
 
-    private void Awake()
+    protected override void Awake()
     {
-        InitializePool();
+        base.Awake();
+        InitializePools();
     }
-
-    private void InitializePool()
+    private void InitializePools()
     {
-        _bulletPool = new List<Projectile>();
-        for (int i = 0; i < initialPoolSize; i++)
+        bulletPools = new Dictionary<Projectile, Pool>();
+
+        foreach (var poolInfo in bulletPoolInfos)
         {
-            Projectile bullet = CreateBullet();
-            bullet.gameObject.SetActive(false);
-            _bulletPool.Add(bullet);
+            if (poolInfo.prefab == null) continue;
+
+          
+            Pool pool = new Pool(poolInfo.prefab, poolInfo.initialSize, this.transform);
+            bulletPools.Add(poolInfo.prefab, pool);
         }
     }
-
-    private Projectile CreateBullet()
+    public Projectile GetBullet(Projectile prefab, Vector3 position, Quaternion rotation)
     {
-        GameObject bulletObject = Instantiate(bulletPrefab);
-        if (!bulletObject.TryGetComponent(out Projectile bullet))
+        if (!bulletPools.ContainsKey(prefab))
         {
-            bullet = bulletObject.AddComponent<Projectile>();
+            Debug.LogWarning($"Pool for {prefab.name} not found. Creating a new pool dynamically.");
+            bulletPools[prefab] = new Pool(prefab, 5, this.transform);
         }
+
+        Projectile bullet = bulletPools[prefab].Get();
+        bullet.transform.position = position;
+        bullet.transform.rotation = rotation;
         return bullet;
     }
-
-    public Projectile GetBullet(Vector3 position, Quaternion rotation)
+    public void ReturnBullet(Projectile prefab, Projectile bullet)
     {
-        foreach (Projectile bullet in _bulletPool)
+        if (bulletPools.ContainsKey(prefab))
         {
-            if (!bullet.gameObject.activeInHierarchy)
-            {
-                bullet.transform.position = position;
-                bullet.transform.rotation = rotation;
-                bullet.gameObject.SetActive(true);
-                return bullet;
-            }
+            bulletPools[prefab].ReturnToPool(bullet);
         }
-        Projectile newBullet = CreateBullet();
-        newBullet.transform.position = position;
-        newBullet.transform.rotation = rotation;
-        newBullet.gameObject.SetActive(true);
-        _bulletPool.Add(newBullet);
-        return newBullet;
-    }
-
-    public void ReturnBullet(Projectile bullet)
-    {
-        bullet.gameObject.SetActive(false);
+        else
+        {
+            Debug.LogError("Trying to return bullet to a non-existing pool.");
+            Destroy(bullet.gameObject);
+        }
     }
 }

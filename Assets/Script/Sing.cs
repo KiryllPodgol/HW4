@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T _instance;
@@ -20,14 +19,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             {
                 if (_instance == null)
                 {
-                    _instance = FindObjectOfType<T>();
-
-                    if (FindObjectsOfType<T>().Length > 1)
-                    {
-                        Debug.LogError(
-                            $"[Singleton] There should never be more than one singleton of type {typeof(T)} in the scene!");
-                        return _instance;
-                    }
+                    _instance = FindFirstObjectByType<T>();
 
                     if (_instance == null)
                     {

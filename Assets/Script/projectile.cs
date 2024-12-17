@@ -21,22 +21,21 @@ public abstract class Projectile : MonoBehaviour
         _rb.AddForce(direction * _force);
     }
 
-  protected virtual void OnCollisionEnter(Collision collision)
+    protected virtual void OnCollisionEnter(Collision collision)
     {
         ApplyImapct(collision);
-        Destroy(gameObject);
+        BulletManager.Instance.ReturnBullet(this, this);
     }
-
     public float impactForce;
     protected virtual void ApplyImapct(Collision collision)
     {
-      Rigidbody targetRb = collision.collider.GetComponent<Rigidbody>();
-      if (!targetRb)
-      {
-          return;
-      }
+        Rigidbody targetRb = collision.collider.GetComponent<Rigidbody>();
+        if (!targetRb)
+        {
+            return;
+        }
       
-      Vector3 forceDirection = _rb.linearVelocity.normalized;
-      targetRb.AddForce(forceDirection * impactForce, ForceMode.Impulse);
+        Vector3 forceDirection = _rb.linearVelocity.normalized;
+        targetRb.AddForce(forceDirection * impactForce, ForceMode.Impulse);
     }
 }
