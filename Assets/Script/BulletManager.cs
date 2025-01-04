@@ -37,7 +37,9 @@ public class BulletManager : Singleton<BulletManager>
         }
 
         IPoolable bullet = bulletPools[prefab].Get();
-        // Здесь можно установить позицию и вращение для специфичных объектов
+        Transform t = ((Projectile)bullet).transform;
+        t.position = position;
+        t.rotation = rotation;
         return bullet;
     }
 

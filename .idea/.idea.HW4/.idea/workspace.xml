@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b36916aa-ab37-4ffd-8bf6-58cfd1b19e36" name="Changes" comment="" />
+    <list default="true" id="b36916aa-ab37-4ffd-8bf6-58cfd1b19e36" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.HW4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HW4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/BulletManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/BulletManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Script/projectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/projectile.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +37,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;&lt;unknown&gt;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -118,6 +123,8 @@
       <workItem from="1734447511330" duration="1000" />
       <workItem from="1734447587411" duration="3000" />
       <workItem from="1734447595962" duration="357000" />
+      <workItem from="1735981648995" duration="72000" />
+      <workItem from="1735981764336" duration="311000" />
     </task>
     <servers />
   </component>

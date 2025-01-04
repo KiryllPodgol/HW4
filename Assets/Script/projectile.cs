@@ -37,15 +37,13 @@ public abstract class Projectile : MonoBehaviour, IPoolable
         Vector3 forceDirection = _rb.linearVelocity.normalized;
         targetRb.AddForce(forceDirection * impactForce, ForceMode.Impulse);
     }
-
-    // ���������� ������� ���������� IPoolable
     public void OnObjectSpawn()
     {
-        gameObject.SetActive(true); // ��������� �������
+        gameObject.SetActive(true); 
     }
 
     public void OnObjectDespawn()
     {
-        gameObject.SetActive(false); // ����������� �������
+        gameObject.SetActive(false);
     }
 }
